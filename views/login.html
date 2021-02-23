@@ -17,7 +17,7 @@
 <div id="app">
 
     <section class="side">
-        <img src="../public/image/img.svg">
+        <img src="../public/image/img.svg" alt="fffg">
     </section>
 
     <section class="main">
@@ -28,13 +28,13 @@
 <!--                <p v-html="error"></p>-->
 <!--            </div>-->
 
-            <ul>
+            <!-- <ul>
                 <li class="error" v-for="err in error">{{ err }}</li>
-            </ul>
+            </ul> -->
 
 
             <p class="title">ورود کاربران</p>
-            <div class="separator"></div>
+        
 
             <form action="" class="login-form">
                 <div class="form-control">
@@ -42,11 +42,22 @@
                     <i class="fas fa-user"></i>
                 </div>
 
+                <!-- display error -->
+                <div>
+                <p class="error" v-html="error_name"></p>
+                 </div>
 
                 <div class="form-control">
                     <input type="password" placeholder="رمز عبور " v-model="password">
                     <i class="fas fa-lock"></i>
                 </div>
+
+                <!-- display error -->
+                <div>
+                <p class="error" v-html="error_password"></p>
+                <p v-if="!error_password" class="error" v-html="error_password_length"></p>
+
+            </div>
                 <button class="submit" @click="checkUserData">ورود</button>
             </form>
         </div>
@@ -70,26 +81,38 @@
         data: () => ({
             user_name: '',
             password: '',
-            error: '',
+            error_name: '',
+            error_password: '',
+            error_password_length:'',
         }),
 
         methods: {
             checkUserData(e) {
-                this.error =[];
+                this.error_name ='';
+                this.error_password ='';
+                this.error_password_length ='';
 
                 if (!this.user_name) {
-                    this.error.push('نام کاربری خود را وارد نمایید');
+                    this.error_name = 'نام کاربری یا ایمیل خود را وارد نمایید';
+                    // this.error.push('نام کاربری خود را وارد نمایید');
                 }
 
                 if (!this.password) {
-                    // this.error += '<br/>رمز عبور خود را وارد نمایید';
-                    this.error.push('رمز عبور خود را وارد نمایید');
+                    this.error_password = 'رمز عبور خود را وارد نمایید';
+                    // this.error.push('رمز عبور خود را وارد نمایید');
 
                 }
-                if (this.error.length === 0) {
+                 
+                if(this.password.length < 8){
+                    this.error_password_length = 'رمز عبور باید حداقل 8 کاراکتر باشد';
+                 }else{
+                    this.error_password_length.clear(); 
+                 }
+
+                if (this.error_name.length === 0 && this.error_password.length === 0 && this.error_password ===0) {
                     alert("خوش آمدید");
                 }
-                console.log(this.error);
+
                 e.preventDefault();
             }
         },

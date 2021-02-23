@@ -10,6 +10,18 @@
     font-style: normal;
     src: url('../font/IRANSansWeb(FaNum).ttf') format('truetype');
 }
+
+@media (max-width: 780px) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .side{
+        display: none;
+    }
+}
+
 body {
     min-height: 100vh;
     width: 100%;
@@ -17,6 +29,7 @@ body {
     grid-template-columns: 1fr 1fr;
     font-family: IRANSans;
 }
+
 #app{
     width: 100%;
     height: 100vh;
@@ -52,6 +65,7 @@ section.side {
     font-weight: bold;
     text-align: center;
     letter-spacing: 1px;
+    margin-bottom: 50px;
 }
 
 .separator {
@@ -124,19 +138,14 @@ button.submit:hover{
     color: #ff415a;
     direction: rtl;
     text-align: right;
+    margin-top: -20px;
+    margin-right: 20px;
+    padding: 0;
+    margin-bottom: 20px;
 }
 
 
 
 
-@media (max-width: 780px) {
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .side{
-        display: none;
-    }
-}
+
 
