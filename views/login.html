@@ -14,7 +14,7 @@
           crossorigin="anonymous"/>
 </head>
 <body>
-<div id="app">
+    <div id="app">
 
     <section class="side">
         <img src="../public/image/img.svg" alt="fffg">
@@ -24,14 +24,6 @@
 
 
         <div class="login-container">
-<!--            <div>-->
-<!--                <p v-html="error"></p>-->
-<!--            </div>-->
-
-            <!-- <ul>
-                <li class="error" v-for="err in error">{{ err }}</li>
-            </ul> -->
-
 
             <p class="title">ورود کاربران</p>
         
@@ -43,9 +35,8 @@
                 </div>
 
                 <!-- display error -->
-                <div>
                 <p class="error" v-html="error_name"></p>
-                 </div>
+
 
                 <div class="form-control">
                     <input type="password" placeholder="رمز عبور " v-model="password">
@@ -53,11 +44,10 @@
                 </div>
 
                 <!-- display error -->
-                <div>
                 <p class="error" v-html="error_password"></p>
-                <p v-if="!error_password" class="error" v-html="error_password_length"></p>
+                <p class="error" v-html="error_password_length"></p>
 
-            </div>
+
                 <button class="submit" @click="checkUserData">ورود</button>
             </form>
         </div>
@@ -105,11 +95,9 @@
                  
                 if(this.password.length < 8){
                     this.error_password_length = 'رمز عبور باید حداقل 8 کاراکتر باشد';
-                 }else{
-                    this.error_password_length.clear(); 
                  }
 
-                if (this.error_name.length === 0 && this.error_password.length === 0 && this.error_password ===0) {
+                if (this.error_password_length.length === 0 && this.error_name.length === 0 && this.error_password.length === 0) {
                     alert("خوش آمدید");
                 }
 
